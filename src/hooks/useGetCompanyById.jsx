@@ -5,11 +5,10 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSingleCompany } from "@/redux/companySlice";
 
-const useGetCompanyById = () => {
+const useGetCompanyById = (companyId) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
   useEffect(() => {
     const fetchSingleCompany = async () => {
       setLoading(true);
@@ -21,9 +20,9 @@ const useGetCompanyById = () => {
             withCredentials: true,
           }
         );
-        console.log("API Response: ", res.data);
-        if (res.data.status) {
+        if (res.data.success) {
           dispatch(setSingleCompany(res.data.company));
+          console.log("API Response: ", res.data);
         } else {
           setError("Failed to fetch jobs.");
         }
@@ -35,7 +34,7 @@ const useGetCompanyById = () => {
       }
     };
     fetchSingleCompany();
-  }, [dispatch]);
+  }, [companyId, dispatch]);
   return { loading, error };
 };
 

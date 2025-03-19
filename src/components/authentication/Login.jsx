@@ -98,23 +98,29 @@ const Login = () => {
                 <Input
                   type="radio"
                   name="role"
+                  id="r1"
                   value="Student"
                   checked={input.role === "Student"}
                   onChange={changeEventListener}
                   className="cursor-pointer"
                 />
-                <Label htmlFor="r1">Student</Label>
+                <Label htmlFor="r1" className="cursor-pointer">
+                  Student
+                </Label>
               </div>
               <div className="flex items-center space-x-2">
                 <Input
                   type="radio"
                   name="role"
+                  id="r2"
                   value="Recruiter"
                   checked={input.role === "Recruiter"}
                   onChange={changeEventListener}
                   className="cursor-pointer"
                 />
-                <Label htmlFor="r2">Recruiter</Label>
+                <Label htmlFor="r2" className="cursor-pointer">
+                  Recruiter
+                </Label>
               </div>
             </RadioGroup>
           </div>

@@ -18,7 +18,7 @@ const CompaniesTable = () => {
   const companies = useSelector((store) => store.company.companies);
   // const searchCompanyByText = useSelector((store) => store.company.companies);
   const navigate = useNavigate();
-  const [filterCompany, setFilterCompany] = useState(companies);
+  // const [filterCompany, setFilterCompany] = useState(companies);
 
   // useEffect(() => {
   //   const filteredCompany =
@@ -53,10 +53,10 @@ const CompaniesTable = () => {
         </TableHeader>
 
         <TableBody>
-          {filterCompany.length === 0 ? (
+          {companies.length === 0 ? (
             <span>No Companies Added</span>
           ) : (
-            filterCompany?.map((company) => (
+            companies?.map((company) => (
               <TableRow key={company.id}>
                 <TableCell>
                   <Avatar>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components_lite/Navbar";
 import { Button } from "../ui/button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Loader2 } from "lucide-react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import axios from "axios";
@@ -160,9 +160,15 @@ const CompanySetup = () => {
             </div>
           </div>
 
-          <Button type="submit" className="w-full  mt-8 ">
-            Update
-          </Button>
+          {loading ? (
+            <Button className="w-full my-4">
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please wait
+            </Button>
+          ) : (
+            <Button type="submit" className="w-full my-4">
+              Update
+            </Button>
+          )}
         </form>
       </div>
     </div>

@@ -15,26 +15,27 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const CompaniesTable = () => {
-  const companies = useSelector((store) => store.company.companies);
-  // const searchCompanyByText = useSelector((store) => store.company.companies);
+  const { companies, searchCompanyByText } = useSelector(
+    (store) => store.company
+  );
   const navigate = useNavigate();
-  // const [filterCompany, setFilterCompany] = useState(companies);
+  const [filterCompany, setFilterCompany] = useState(companies);
 
-  // useEffect(() => {
-  //   const filteredCompany =
-  //     companies.length >= 0 &&
-  //     companies.filter((company) => {
-  //       if (!searchCompanyByText) {
-  //         return true;
-  //       }
-  //       return company.name
-  //         ?.toLowerCase()
-  //         .includes(searchCompanyByText.toLowerCase());
-  //     });
-  //   setFilterCompany(filteredCompany);
-  // }, [companies, searchCompanyByText]);
+  useEffect(() => {
+    const filteredCompany =
+      companies.length >= 0 &&
+      companies.filter((company) => {
+        if (!searchCompanyByText) {
+          return true;
+        }
+        return company.name
+          ?.toLowerCase()
+          .includes(searchCompanyByText.toLowerCase());
+      });
+    setFilterCompany(filteredCompany);
+  }, [companies, searchCompanyByText]);
 
-  // console.log("COMPANIES", companies);
+  console.log("COMPANIES", companies);
   if (!companies) {
     return <div>Loading...</div>;
   }
@@ -53,10 +54,10 @@ const CompaniesTable = () => {
         </TableHeader>
 
         <TableBody>
-          {companies.length === 0 ? (
+          {filterCompany.length === 0 ? (
             <span>No Companies Added</span>
           ) : (
-            companies?.map((company) => (
+            filterCompany?.map((company) => (
               <TableRow key={company.id}>
                 <TableCell>
                   <Avatar>

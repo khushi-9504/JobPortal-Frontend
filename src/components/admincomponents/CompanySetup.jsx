@@ -11,6 +11,8 @@ import { toast } from "sonner";
 import { useSelector } from "react-redux";
 
 const CompanySetup = () => {
+  const params = useParams();
+
   const [input, setInput] = useState({
     name: "",
     description: "",
@@ -21,7 +23,7 @@ const CompanySetup = () => {
 
   const singleCompany = useSelector((store) => store.company.singleCompany);
   const [loading, setLoading] = useState(false);
-  const params = useParams();
+
   const navigate = useNavigate();
 
   const changeEventHandler = (event) => {

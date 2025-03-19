@@ -14,13 +14,12 @@ const CompanyCreate = () => {
   const navigate = useNavigate();
   const [companyName, setCompanyName] = useState("");
   const dispatch = useDispatch();
-
   const registerNewCompany = async () => {
     try {
       const res = await axios.post(
         `${COMPANY_API_ENDPOINT}/register`,
         {
-          companyName,
+          companyName: companyName,
         },
         {
           headers: {
@@ -29,6 +28,7 @@ const CompanyCreate = () => {
           withCredentials: true,
         }
       );
+      console.log(res.data.company);
       if (res?.data?.success) {
         dispatch(setSingleCompany(res.data.company));
 

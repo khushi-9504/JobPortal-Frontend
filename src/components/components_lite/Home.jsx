@@ -15,7 +15,7 @@ const Home = () => {
   console.log("Jobs in Component:", { loading, error, jobs }); // Log to check state
   const { user } = useSelector((store) => store.auth);
   const navigate = useNavigate();
-
+  useGetAllJobs();
   useEffect(() => {
     if (user?.role === "Recruiter") {
       navigate("/admin/companies");

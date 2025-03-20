@@ -6,12 +6,16 @@ import { Button } from "../ui/button";
 import CompaniesTable from "./CompaniesTable";
 import { useNavigate } from "react-router-dom";
 import usegetAllCompanies from "@/hooks/usegetAllCompanies";
+import useGetAllAdminJobs from "@/hooks/useGetAllAdminJobs";
+
 import { useDispatch } from "react-redux";
 import { searchCompanyByText } from "@/redux/companySlice";
 
 const Companies = () => {
   const navigate = useNavigate();
   usegetAllCompanies();
+  useGetAllAdminJobs();
+
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {

@@ -9,7 +9,7 @@ import useGetAllAdminJobs from "@/hooks/useGetAllAdminJobs";
 import { searchJobByText } from "@/redux/jobSlice";
 
 const AdminJobs = () => {
-  useGetAllAdminJobs();
+  // useGetAllAdminJobs();
   const navigate = useNavigate();
   const [input, setInput] = useState("");
   const dispatch = useDispatch();

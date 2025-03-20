@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Navbar from "./Navbar";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
-import { Contact, Mail, Pen } from "lucide-react";
+import { Contact, Mail, Pen, IdCard, CreditCard } from "lucide-react";
+
 import { Badge } from "../ui/badge";
 import AppliedJobs from "./AppliedJobs";
 import EditProfile from "./EditProfile";
@@ -56,6 +57,18 @@ const Profile = () => {
             <Contact />
             <span className="">
               <a href={`tel: ${user?.phoneNumber}`}>{user?.phoneNumber}</a>
+            </span>
+          </div>
+          <div className="flex items-center gap-3 my-2">
+            <IdCard />
+            <span className="">
+              <a href={`adharcard: ${user?.adharcard}`}>{user?.adharcard}</a>
+            </span>
+          </div>
+          <div className="flex items-center gap-3 my-2">
+            <CreditCard />
+            <span className="">
+              <a href={`adharcard: ${user?.pancard}`}>{user?.pancard}</a>
             </span>
           </div>
         </div>

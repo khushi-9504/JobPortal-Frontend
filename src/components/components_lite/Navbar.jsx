@@ -38,10 +38,12 @@ const Navbar = () => {
     <div className="bg-white">
       <div className="flex items-center justify-between mx-auto max-w-7xl h-16">
         <div>
-          <h1 className="text-2xl font-bold">
-            <span className="text-[#6B3AC2]">Job </span>
-            <span className="text-[#FA4F09]">Portal</span>
-          </h1>
+          <Link to={"/home"}>
+            <h1 className="text-2xl font-bold">
+              <span className="text-[#6B3AC2]">Job </span>
+              <span className="text-[#FA4F09]">Portal</span>
+            </h1>
+          </Link>
         </div>
 
         <div className="flex items-center gap-10">

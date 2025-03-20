@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 import { APPLICATION_API_ENDPOINT } from "@/utils/data";
+import Navbar from "./Navbar";
 
 const Description = () => {
   const params = useParams();
@@ -79,6 +80,7 @@ const Description = () => {
   }
   return (
     <div>
+      <Navbar />
       <div className="max-w-7xl mx-auto my-10 ">
         <div className="flex items-center justify-between">
           <div>

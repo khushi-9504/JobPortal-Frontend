@@ -30,6 +30,7 @@ const PostJob = () => {
     jobType: "",
     experience: "",
     position: 0,
+    name: "",
     companyId: "",
   });
   const navigate = useNavigate();
@@ -42,8 +43,12 @@ const PostJob = () => {
     const selectedCompany = companies.find(
       (company) => company.name.toLowerCase() === value
     );
-    setInput({ ...input, companyId: selectedCompany._id });
-    console.log(selectedCompany);
+
+    setInput({
+      ...input,
+      name: selectedCompany.name,
+      companyId: selectedCompany._id,
+    });
   };
 
   const submitHandler = async (e) => {
@@ -196,15 +201,11 @@ const PostJob = () => {
           </div>
           <div className="flex items-center justify-center mt-5">
             {loading ? (
-              <Button className="w-full px-4 py-2 text-sm text-white bg-black rounded-md ">
-                {" "}
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please wait{" "}
+              <Button className="w-full my-4">
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please wait
               </Button>
             ) : (
-              <Button
-                type="submit"
-                className="w-full px-4 py-2 text-sm text-white bg-black rounded-md hover:bg-blue-600"
-              >
+              <Button type="submit" className="w-full my-4">
                 Post Job
               </Button>
             )}

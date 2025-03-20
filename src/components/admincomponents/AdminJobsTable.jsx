@@ -12,12 +12,14 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Edit2, MoreHorizontal } from "lucide-react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import useGetAllAdminJobs from "@/hooks/useGetAllAdminJobs";
 
 const AdminJobsTable = () => {
   const { allAdminJobs, searchJobByText } = useSelector((store) => store.jobs);
 
   const navigate = useNavigate();
   const [filterJobs, setFilterJobs] = useState(allAdminJobs);
+  useGetAllAdminJobs();
 
   useEffect(() => {
     const filteredJobs =
@@ -47,7 +49,8 @@ const AdminJobsTable = () => {
         <TableHeader>
           <TableRow>
             <TableHead>Company Name</TableHead>
-            <TableHead>Role</TableHead>
+            <TableHead>Job Title</TableHead>
+            <TableHead>No. of Position</TableHead>
             <TableHead>Date</TableHead>
             <TableHead className="text-right">Action</TableHead>
           </TableRow>
@@ -60,6 +63,7 @@ const AdminJobsTable = () => {
             filterJobs?.map((job) => (
               <TableRow key={job.id}>
                 <TableCell>{job?.company?.name}</TableCell>
+                <TableCell>{job.title}</TableCell>
                 <TableCell>{job.position}</TableCell>
                 <TableCell>{job.createdAt.split("T")[0]}</TableCell>
                 <TableCell className="text-right cursor-pointer">

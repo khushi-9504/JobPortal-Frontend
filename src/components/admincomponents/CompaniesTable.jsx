@@ -35,7 +35,6 @@ const CompaniesTable = () => {
     setFilterCompany(filteredCompany);
   }, [companies, searchCompanyByText]);
 
-  console.log("COMPANIES", companies);
   if (!companies) {
     return <div>Loading...</div>;
   }

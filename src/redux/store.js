@@ -4,6 +4,8 @@ import jobSlice from "./jobSlice";
 import companySlice from "./companySlice";
 import jobReducer from "./jobSlice";
 import { createRoot } from "react-dom/client";
+import applicationSlice from "./applicationSlice";
+
 import {
   persistStore,
   persistReducer,
@@ -27,6 +29,7 @@ const rootReducer = combineReducers({
   // job: jobSlice,
   jobs: jobSlice,
   company: companySlice,
+  application: applicationSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

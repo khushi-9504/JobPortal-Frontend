@@ -66,7 +66,7 @@ const Job = ({ job }) => {
 
         <div className="flex gap-2 items-center mt-4">
           <Badge className={"text-blue-600 font-bold"} variant="ghost">
-            {position}
+            {position} Open Positions
           </Badge>
 
           <Badge className={"text-[#FA4F00] font-bold"} variant="ghost">

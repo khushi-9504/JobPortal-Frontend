@@ -125,7 +125,7 @@ const Description = () => {
             <h1>
               Role:
               <span className="pl-4 font-normal text-gray-800">
-                {singleJob?.position} Open Position
+                {singleJob?.position} Open Positions
               </span>
             </h1>
 

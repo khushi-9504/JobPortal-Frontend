@@ -42,14 +42,13 @@ const Job = ({ job }) => {
           onClick={() => setIsBookmarked(!isBookmarked)}
         >
           {isBookmarked ? <BookMarked /> : <Bookmark />}
-          <Bookmark />
         </Button>
       </div>
 
       <div className="flex items-center gap-2 my-2">
         <Button className="p-6" variant="outline" size="icon">
           <Avatar>
-            <AvatarImage src="https://tse4.mm.bing.net/th?id=OIP.8OMFA9whxc7CqD12FW9D9QHaFj&pid=Api&P=0&h=180"></AvatarImage>
+            <AvatarImage src={company.logo}></AvatarImage>
           </Avatar>
         </Button>
 

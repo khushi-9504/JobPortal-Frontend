@@ -14,30 +14,29 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const AdminJobsTable = () => {
-  const { companies, searchCompanyByText } = useSelector(
-    (store) => store.company
-  );
-
-  const { allAdminJobs } = useSelector((store) => store.jobs);
+  const { allAdminJobs, searchJobByText } = useSelector((store) => store.jobs);
 
   const navigate = useNavigate();
   const [filterJobs, setFilterJobs] = useState(allAdminJobs);
 
   useEffect(() => {
-    const filteredCompany =
+    const filteredJobs =
       allAdminJobs.length >= 0 &&
       allAdminJobs.filter((job) => {
-        if (!searchCompanyByText) {
+        if (!searchJobByText) {
           return true;
         }
-        return company.name
-          ?.toLowerCase()
-          .includes(searchCompanyByText.toLowerCase());
+        return (
+          job?.title?.toLowerCase().includes(searchJobByText.toLowerCase()) ||
+          job?.company?.name
+            .toLowerCase()
+            .includes(searchJobByText.toLowerCase())
+        );
       });
-    setFilterJobs(filteredCompany);
-  }, [companies, searchCompanyByText]);
+    setFilterJobs(filteredJobs);
+  }, [allAdminJobs, searchJobByText]);
 
-  if (!companies) {
+  if (!allAdminJobs) {
     return <div>Loading...</div>;
   }
 

@@ -5,8 +5,8 @@ import { Button } from "../ui/button";
 import AdminJobsTable from "./AdminJobsTable";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { searchCompanyByText } from "@/redux/companySlice";
 import useGetAllAdminJobs from "@/hooks/useGetAllAdminJobs";
+import { searchJobByText } from "@/redux/jobSlice";
 
 const AdminJobs = () => {
   useGetAllAdminJobs();
@@ -15,7 +15,7 @@ const AdminJobs = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(searchCompanyByText(input));
+    dispatch(searchJobByText(input));
   }, [input]);
 
   return (
@@ -25,10 +25,10 @@ const AdminJobs = () => {
         <div className="flex items-center justify-between my-5">
           <Input
             className="w-fit"
-            placeholder="Filter by Name"
+            placeholder="Filter by Name & Jobs"
             onChange={(e) => setInput(e.target.value)}
           ></Input>
-          <Button onClick={() => navigate("/admin/companies/create")}>
+          <Button onClick={() => navigate("/admin/jobs/create")}>
             Post new job
           </Button>
         </div>

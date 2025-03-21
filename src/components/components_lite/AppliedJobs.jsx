@@ -19,6 +19,7 @@ const AppliedJob = () => {
         <TableCaption>Recent Applied Jobs</TableCaption>
         <TableHeader>
           <TableRow>
+            <TableHead className="w-16">Sr. No</TableHead>
             <TableHead>Date</TableHead>
             <TableHead>Job Title</TableHead>
             <TableHead>Company</TableHead>
@@ -29,8 +30,9 @@ const AppliedJob = () => {
           {allAppliedJobs.length <= 0 ? (
             <span>You have not applied any job yet. </span>
           ) : (
-            allAppliedJobs.map((appliedJob) => (
+            allAppliedJobs.map((appliedJob, index) => (
               <TableRow key={appliedJob._id}>
+                <TableCell className="w-16">{index + 1}</TableCell>
                 <TableCell>{appliedJob?.createdAt.split("T")[0]}</TableCell>
                 <TableCell>{appliedJob.job?.title}</TableCell>
                 <TableCell>{appliedJob.job?.company.name}</TableCell>

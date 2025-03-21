@@ -48,6 +48,7 @@ const AdminJobsTable = () => {
         <TableCaption>Your recent posted jobs</TableCaption>
         <TableHeader>
           <TableRow>
+            <TableHead className="w-16">Sr. No</TableHead>
             <TableHead>Company Name</TableHead>
             <TableHead>Job Title</TableHead>
             <TableHead>No. of Position</TableHead>
@@ -60,8 +61,9 @@ const AdminJobsTable = () => {
           {filterJobs.length === 0 ? (
             <span>No Jobs Posted</span>
           ) : (
-            filterJobs?.map((job) => (
+            filterJobs?.map((job, index) => (
               <TableRow key={job.id}>
+                <TableCell className="w-16">{index + 1}</TableCell>
                 <TableCell>{job?.company?.name}</TableCell>
                 <TableCell>{job.title}</TableCell>
                 <TableCell>{job.position}</TableCell>

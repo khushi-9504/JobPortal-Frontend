@@ -45,6 +45,7 @@ const CompaniesTable = () => {
         <TableCaption>Your recent registered Companies</TableCaption>
         <TableHeader>
           <TableRow>
+            <TableHead className="w-16">Sr. No</TableHead>
             <TableHead>Logo</TableHead>
             <TableHead>Company Name</TableHead>
             <TableHead>Date</TableHead>
@@ -56,8 +57,9 @@ const CompaniesTable = () => {
           {filterCompany.length === 0 ? (
             <span>No Companies Added</span>
           ) : (
-            filterCompany?.map((company) => (
+            filterCompany?.map((company, index) => (
               <TableRow key={company.id}>
+                <TableCell className="w-16">{index + 1}</TableCell>
                 <TableCell>
                   <Avatar>
                     <AvatarImage

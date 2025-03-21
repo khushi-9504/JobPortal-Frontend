@@ -6,7 +6,17 @@ import { Avatar, AvatarImage } from "../ui/avatar.jsx";
 
 const JobCards = ({ job }) => {
   const navigate = useNavigate();
-
+  const truncateText = (text, limit) => {
+    if (text.length > limit) {
+      return (
+        <>
+          {text.substring(0, limit)}
+          <span className="text-blue-500 cursor-pointer">... More</span>
+        </>
+      );
+    }
+    return text;
+  };
   return (
     <div
       onClick={() => navigate(`/description/${job._id}`)}
@@ -24,7 +34,11 @@ const JobCards = ({ job }) => {
 
       <div>
         <h1 className="font-bold text-lg my-2">{job.title}</h1>
-        <p className="text-sm text-gray-600">{job.description}</p>
+        <div className="h-[60px] overflow-hidden">
+          <p className="text-sm text-gray-600">
+            {truncateText(job.description, 100)}
+          </p>
+        </div>{" "}
       </div>
 
       <div className="flex gap-2 items-center mt-4">

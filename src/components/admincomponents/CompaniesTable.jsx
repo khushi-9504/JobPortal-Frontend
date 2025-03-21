@@ -10,10 +10,11 @@ import {
 } from "../ui/table";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { Edit2, MoreHorizontal } from "lucide-react";
+import { Edit2, MoreHorizontal, Trash2 } from "lucide-react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
+import { COMPANY_API_ENDPOINT } from "@/utils/data";
 const CompaniesTable = () => {
   const { companies, searchCompanyByText } = useSelector(
     (store) => store.company
@@ -38,7 +39,33 @@ const CompaniesTable = () => {
   if (!companies) {
     return <div>Loading...</div>;
   }
+  const handleDeleteCompany = async (companyid) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this company?"
+    );
+    if (!confirmDelete) return;
 
+    try {
+      const response = await axios.delete(
+        `${COMPANY_API_ENDPOINT}/delete/${companyid}`,
+        {
+          withCredentials: true, // Pass authentication token with cookies
+        }
+      );
+
+      if (response.data.status) {
+        alert("Company deleted successfully!");
+        setFilterCompany((prevCompany) =>
+          prevCompany.filter((company) => company._id !== companyid)
+        );
+      } else {
+        alert("Failed to delete company: " + response.data.message);
+      }
+    } catch (error) {
+      console.error("Error deleting company:", error);
+      alert("Something went wrong while deleting the company.");
+    }
+  };
   return (
     <div>
       <Table>
@@ -88,6 +115,14 @@ const CompaniesTable = () => {
                       >
                         <Edit2 className="w-4" />
                         <span>Edit</span>
+                      </div>
+                      <hr />
+                      <div
+                        onClick={() => handleDeleteCompany(company._id)}
+                        className="flex items-center gap-2 w-fit cursor-pointer mt-1"
+                      >
+                        <Trash2 className="w-4"></Trash2>
+                        <span>Remove</span>
                       </div>
                     </PopoverContent>
                   </Popover>

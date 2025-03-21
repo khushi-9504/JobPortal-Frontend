@@ -1,6 +1,8 @@
 import React from "react";
 import { Badge } from "../ui/badge";
 import { useNavigate } from "react-router-dom";
+import { Button } from "../ui/button";
+import { Avatar, AvatarImage } from "../ui/avatar.jsx";
 
 const JobCards = ({ job }) => {
   const navigate = useNavigate();
@@ -10,10 +12,15 @@ const JobCards = ({ job }) => {
       onClick={() => navigate(`/description/${job._id}`)}
       className="p-5 rounded-md shadow-xl bg-white border border-gray-200 cursor-pointer hover:shadow-2xl shadow-blue-200 hover:p-3"
     >
-      <div>
+      <div className="flex items-center space-x-4">
+        <Button className="p-6" variant="outline" size="icon">
+          <Avatar>
+            <AvatarImage src={job.company.logo} />
+          </Avatar>
+        </Button>
         <h1 className="text-lg font-medium">{job.company.name}</h1>
-        <p className="text-sm text-gray-600">India</p>
       </div>
+      <p className="text-sm text-gray-600">{job.location}</p>
 
       <div>
         <h1 className="font-bold text-lg my-2">{job.title}</h1>

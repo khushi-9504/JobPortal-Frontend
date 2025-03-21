@@ -55,7 +55,11 @@ const CompaniesTable = () => {
 
         <TableBody>
           {filterCompany.length === 0 ? (
-            <span>No Companies Added</span>
+            <TableRow>
+              <TableCell colSpan={6} className="text-center">
+                No Companies Added
+              </TableCell>
+            </TableRow>
           ) : (
             filterCompany?.map((company, index) => (
               <TableRow key={company.id}>

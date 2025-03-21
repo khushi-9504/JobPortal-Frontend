@@ -88,12 +88,7 @@ const Job = ({ job }) => {
           variant="outline"
           className=" bg-[#FA4F09] font-bold rounded-sm"
           onClick={() => {
-            navigate(`/description/${_id}`, {
-              state: {
-                logo: job.company.logo,
-                companyName: job.company.name,
-              },
-            });
+            navigate(`/description/${_id}`);
           }}
         >
           Details

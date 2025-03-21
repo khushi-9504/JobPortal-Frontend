@@ -11,7 +11,7 @@ import { toast } from "sonner";
 import { APPLICATION_API_ENDPOINT } from "@/utils/data";
 import Navbar from "./Navbar";
 import { Avatar, AvatarImage } from "../ui/avatar.jsx";
-import { useLocation } from "react-router-dom";
+import {} from "react-router-dom";
 
 const Description = () => {
   const params = useParams();
@@ -21,8 +21,6 @@ const Description = () => {
   const [error, setError] = useState(null);
   const { singleJob } = useSelector((store) => store.jobs);
   const { user } = useSelector((store) => store.auth);
-  const location = useLocation();
-  const { logo, companyName } = location.state || {}; // Fallback in case state is undefined
 
   const isIntiallyApplied =
     singleJob?.application?.some(
@@ -91,10 +89,10 @@ const Description = () => {
             <div className="flex items-center gap-2 my-2">
               <Button className="p-6" variant="outline" size="icon">
                 <Avatar>
-                  <AvatarImage src={logo}></AvatarImage>
+                  <AvatarImage src={singleJob.company.logo}></AvatarImage>
                 </Avatar>
               </Button>
-              {companyName}
+              {singleJob.company.name}
             </div>
             <h1 className="font-bold text-xl">{singleJob?.title}</h1>
             <div className="flex gap-2 items-center mt-4">

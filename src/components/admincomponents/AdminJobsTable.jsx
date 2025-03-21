@@ -58,8 +58,15 @@ const AdminJobsTable = () => {
         </TableHeader>
 
         <TableBody>
-          {filterJobs.length === 0 ? (
+          {/* {filterJobs.length === 0 ? (
             <span>No Jobs Posted</span>
+          ) : ( */}
+          {filterJobs.length === 0 ? (
+            <TableRow>
+              <TableCell colSpan={6} className="text-center">
+                No Jobs Posted
+              </TableCell>
+            </TableRow>
           ) : (
             filterJobs?.map((job, index) => (
               <TableRow key={job.id}>

@@ -197,7 +197,7 @@ const EditProfile = ({ open, setOpen }) => {
                     id="file"
                     name="file"
                     onChange={FileChangeHandler}
-                    accept="application/pdf"
+                    accept="application"
                     className="col-span-3 border border-gray-300 rounded-md p-2"
                   />
                 </div>

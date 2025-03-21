@@ -94,11 +94,11 @@ const Profile = () => {
               {isResume ? (
                 <a
                   target="_blank"
-                  href={"http://resume.com"}
+                  href={user?.profile?.resume}
                   className="text-blue-600 hover:underline cursor-pointer"
                   download="resume.pdf"
                 >
-                  Download
+                  View Resume
                 </a>
               ) : (
                 <span>No Resume Found</span>

@@ -9,10 +9,12 @@ import {
   TableRow,
 } from "../ui/table";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { Edit2, MoreHorizontal, Eye } from "lucide-react";
+import { Edit2, MoreHorizontal, Eye, Trash2 } from "lucide-react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import useGetAllAdminJobs from "@/hooks/useGetAllAdminJobs";
+import axios from "axios";
+import { JOB_API_ENDPOINT } from "@/utils/data";
 
 const AdminJobsTable = () => {
   const { allAdminJobs, searchJobByText } = useSelector((store) => store.jobs);
@@ -41,6 +43,34 @@ const AdminJobsTable = () => {
   if (!allAdminJobs) {
     return <div>Loading...</div>;
   }
+
+  const handleDeleteJob = async (jobId) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this job?"
+    );
+    if (!confirmDelete) return;
+
+    try {
+      const response = await axios.delete(
+        `${JOB_API_ENDPOINT}/delete/${jobId}`,
+        {
+          withCredentials: true, // Pass authentication token with cookies
+        }
+      );
+
+      if (response.data.status) {
+        alert("Job deleted successfully!");
+        setFilterJobs((prevJobs) =>
+          prevJobs.filter((job) => job._id !== jobId)
+        );
+      } else {
+        alert("Failed to delete job: " + response.data.message);
+      }
+    } catch (error) {
+      console.error("Error deleting job:", error);
+      alert("Something went wrong while deleting the job.");
+    }
+  };
 
   return (
     <div>
@@ -87,7 +117,15 @@ const AdminJobsTable = () => {
                       >
                         <Edit2 className="w-4" />
                         <span>Edit</span>
-                      </div>{" "}
+                      </div>
+                      <hr />
+                      <div
+                        onClick={() => handleDeleteJob(job._id)}
+                        className="flex items-center gap-2 w-fit cursor-pointer mt-1"
+                      >
+                        <Trash2 className="w-4"></Trash2>
+                        <span>Remove</span>
+                      </div>
                       <hr />
                       <div
                         onClick={() =>

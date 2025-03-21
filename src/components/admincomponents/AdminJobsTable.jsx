@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import useGetAllAdminJobs from "@/hooks/useGetAllAdminJobs";
 import axios from "axios";
 import { JOB_API_ENDPOINT } from "@/utils/data";
+import { toast } from "sonner";
 
 const AdminJobsTable = () => {
   const { allAdminJobs, searchJobByText } = useSelector((store) => store.jobs);
@@ -59,16 +60,16 @@ const AdminJobsTable = () => {
       );
 
       if (response.data.status) {
-        alert("Job deleted successfully!");
+        toast.success(response.data.message);
         setFilterJobs((prevJobs) =>
           prevJobs.filter((job) => job._id !== jobId)
         );
       } else {
-        alert("Failed to delete job: " + response.data.message);
+        toast.error(response.data.message);
       }
     } catch (error) {
       console.error("Error deleting job:", error);
-      alert("Something went wrong while deleting the job.");
+      toast.error(error.response?.data?.message);
     }
   };
 
@@ -112,7 +113,7 @@ const AdminJobsTable = () => {
                     </PopoverTrigger>
                     <PopoverContent className="w-32">
                       <div
-                        onClick={() => navigate(`/admin/companies/${job._id}`)}
+                        onClick={() => navigate(`/admin/job/update/${job._id}`)}
                         className="flex items-center gap-2 w-fit cursor-pointer"
                       >
                         <Edit2 className="w-4" />

@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 import { APPLICATION_API_ENDPOINT } from "@/utils/data";
 import Navbar from "./Navbar";
+import { Avatar, AvatarImage } from "../ui/avatar.jsx";
+import { useLocation } from "react-router-dom";
 
 const Description = () => {
   const params = useParams();
@@ -19,6 +21,8 @@ const Description = () => {
   const [error, setError] = useState(null);
   const { singleJob } = useSelector((store) => store.jobs);
   const { user } = useSelector((store) => store.auth);
+  const location = useLocation();
+  const { logo, companyName } = location.state || {}; // Fallback in case state is undefined
 
   const isIntiallyApplied =
     singleJob?.application?.some(
@@ -84,8 +88,15 @@ const Description = () => {
       <div className="max-w-7xl mx-auto my-10 ">
         <div className="flex items-center justify-between">
           <div>
+            <div className="flex items-center gap-2 my-2">
+              <Button className="p-6" variant="outline" size="icon">
+                <Avatar>
+                  <AvatarImage src={logo}></AvatarImage>
+                </Avatar>
+              </Button>
+              {companyName}
+            </div>
             <h1 className="font-bold text-xl">{singleJob?.title}</h1>
-
             <div className="flex gap-2 items-center mt-4">
               <Badge className={"text-blue-600 font-bold"} variant="ghost">
                 {singleJob?.position}

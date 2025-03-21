@@ -23,6 +23,8 @@ const EditProfile = ({ open, setOpen }) => {
     fullname: user?.fullname,
     email: user?.email,
     phoneNumber: user?.phoneNumber,
+    pancard: user?.pancard,
+    adharcard: user?.adharcard,
     bio: user?.profile?.bio,
     skills: user?.profile?.skills?.map((skill) => skill),
     file: user?.profile?.resume,
@@ -40,12 +42,14 @@ const EditProfile = ({ open, setOpen }) => {
     formdata.append("fullname", input.fullname);
     formdata.append("email", input.email);
     formdata.append("phoneNumber", input.phoneNumber);
+    formdata.append("pancard", input.pancard);
+    formdata.append("adharcard", input.adharcard);
     formdata.append("bio", input.bio);
     formdata.append("skills", input.skills);
     if (input.file) {
       formdata.append("file", input.file);
     }
-
+    console.log(formdata);
     try {
       setLoading(true);
       const res = await axios.post(
@@ -125,6 +129,32 @@ const EditProfile = ({ open, setOpen }) => {
                     id="phone"
                     name="phoneNumber"
                     value={input.phoneNumber}
+                    onChange={changeEventHandler}
+                    className="col-span-3 border border-gray-300 rounded-md p-2"
+                  />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="pancard" className="text-right">
+                    Pan Card
+                  </Label>
+                  <input
+                    type="text"
+                    id="pancard"
+                    name="pancard"
+                    value={input.pancard}
+                    onChange={changeEventHandler}
+                    className="col-span-3 border border-gray-300 rounded-md p-2"
+                  />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="adharcard" className="text-right">
+                    Adhar Card
+                  </Label>
+                  <input
+                    type="number"
+                    id="adharcard"
+                    name="adharcard"
+                    value={input.adharcard}
                     onChange={changeEventHandler}
                     className="col-span-3 border border-gray-300 rounded-md p-2"
                   />

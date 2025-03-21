@@ -21,9 +21,9 @@ const ApplicantsTable = () => {
   const { applicants } = useSelector((store) => store.application);
 
   const statusHandler = async (status, id) => {
-    console.log("Updating status for ID:", id, "with status:", status);
+    // console.log("Updating status for ID:", id, "with status:", status);
 
-    console.log("called");
+    // console.log("called");
     try {
       axios.defaults.withCredentials = true;
       const res = await axios.post(

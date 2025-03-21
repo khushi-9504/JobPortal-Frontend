@@ -21,7 +21,7 @@ const useGetAllJobs = () => {
             withCredentials: true,
           }
         );
-        console.log("API Response: ", res.data);
+        // console.log("API Response: ", res.data);
         if (res.data.status) {
           dispatch(setAllJobs(res.data.jobs));
         } else {

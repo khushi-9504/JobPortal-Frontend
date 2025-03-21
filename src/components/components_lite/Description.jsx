@@ -41,7 +41,7 @@ const Description = () => {
           applications: [...singleJob.applications, { applicant: user?._id }],
         };
         dispatch(setSingleJob(updateSingleJob));
-        console.log(res.data);
+        // console.log(res.data);
         toast.success(res.data.message);
       }
     } catch (error) {
@@ -75,7 +75,7 @@ const Description = () => {
     };
     fetchSingleJob();
   }, [jobId, dispatch, user?._id]);
-  console.log("single jobs", singleJob);
+  // console.log("single jobs", singleJob);
 
   if (!singleJob) {
     return <div>Loading...</div>;

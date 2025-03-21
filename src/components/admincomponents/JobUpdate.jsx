@@ -80,7 +80,7 @@ const JobUpdate = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      console.log(input);
+      // console.log(input);
       const res = await axios.put(
         `${JOB_API_ENDPOINT}/update/${jobId}`,
         input,

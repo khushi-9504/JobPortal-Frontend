@@ -26,7 +26,12 @@ const Job = ({ job }) => {
     const timeDifference = currentTime - createdAt;
     return Math.floor(timeDifference / (1000 * 24 * 60 * 60));
   };
-
+  const truncateText = (text, limit) => {
+    if (text.length > limit) {
+      return text.substring(0, limit) + "... More";
+    }
+    return text;
+  };
   return (
     <div className="p-5 rounded-md shadow-xl bg-white border border-gray-200 cursor-pointer hover:shadow-2xl shadow-blue-200 hover:p-3">
       <div className="flex items-center justify-between ">
@@ -61,7 +66,11 @@ const Job = ({ job }) => {
       <div>
         <div>
           <h1 className="font-bold text-lg my-2">{title}</h1>
-          <p className="text-sm text-gray-600">{description}</p>
+          <div className="h-[60px] overflow-hidden">
+            <p className="text-sm text-gray-600">
+              {truncateText(description, 100)}
+            </p>
+          </div>
         </div>
 
         <div className="flex gap-2 items-center mt-4">

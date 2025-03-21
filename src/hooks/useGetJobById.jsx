@@ -19,7 +19,7 @@ const useGetJobById = (jobId) => {
         });
         if (res.data.status) {
           dispatch(setJobById(res.data.job));
-          console.log("API Response: ", res.data);
+          // console.log("API Response: ", res.data);
         } else {
           setError("Failed to fetch jobs.");
         }

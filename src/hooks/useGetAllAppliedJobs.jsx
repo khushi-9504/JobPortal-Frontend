@@ -12,7 +12,7 @@ const useGetAllAppliedJobs = () => {
         const res = await axios.get(`${APPLICATION_API_ENDPOINT}/get`, {
           withCredentials: true,
         });
-        console.log("API Response:", res.data);
+        // console.log("API Response:", res.data);
         if (res.data.success) {
           dispatch(setAllAppliedJobs(res.data.application));
         }

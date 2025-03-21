@@ -49,7 +49,7 @@ const EditProfile = ({ open, setOpen }) => {
     if (input.file) {
       formdata.append("file", input.file);
     }
-    console.log(formdata);
+    // console.log(formdata);
     try {
       setLoading(true);
       const res = await axios.post(

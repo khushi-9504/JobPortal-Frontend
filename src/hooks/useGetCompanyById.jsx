@@ -22,7 +22,7 @@ const useGetCompanyById = (companyId) => {
         );
         if (res.data.success) {
           dispatch(setSingleCompany(res.data.company));
-          console.log("API Response: ", res.data);
+          // console.log("API Response: ", res.data);
         } else {
           setError("Failed to fetch jobs.");
         }

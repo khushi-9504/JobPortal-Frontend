@@ -10,7 +10,7 @@ import { Button } from "../ui/button";
 const Jobs = () => {
   const { allJobs, searchedQuery } = useSelector((store) => store.jobs);
   const [filterJobs, setFilterJobs] = useState(allJobs);
-  console.log(allJobs);
+  // console.log(allJobs);
 
   useEffect(() => {
     if (!searchedQuery || searchedQuery.trim() === "") {

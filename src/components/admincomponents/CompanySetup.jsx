@@ -37,7 +37,7 @@ const CompanySetup = () => {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    console.log(input);
+    // console.log(input);
     const formData = new FormData();
     formData.append("name", input.name);
     formData.append("description", input.description);
@@ -46,13 +46,13 @@ const CompanySetup = () => {
     if (input.file) {
       formData.append("file", input.file);
     }
-    console.log(
-      input.name,
-      input.description,
-      input.website,
-      input.location,
-      input.file
-    );
+    // console.log(
+    //   input.name,
+    //   input.description,
+    //   input.website,
+    //   input.location,
+    //   input.file
+    // );
 
     try {
       setLoading(true);

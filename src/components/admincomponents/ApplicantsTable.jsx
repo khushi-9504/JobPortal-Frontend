@@ -45,6 +45,7 @@ const ApplicantsTable = () => {
         <TableCaption>A list of your recent applied user</TableCaption>
         <TableHeader>
           <TableRow>
+            <TableHead className="w-16">Sr. No</TableHead>
             <TableHead>FullName</TableHead>
             <TableHead>Email</TableHead>
             <TableHead>Contact</TableHead>
@@ -55,8 +56,9 @@ const ApplicantsTable = () => {
         </TableHeader>
         <TableBody>
           {applicants &&
-            applicants?.applications?.map((item) => (
+            applicants?.applications?.map((item, index) => (
               <tr key={item._id}>
+                <TableCell className="w-16">{index + 1}</TableCell>
                 <TableCell>{item?.applicant?.fullname}</TableCell>
                 <TableCell>{item?.applicant?.email}</TableCell>
                 <TableCell>{item?.applicant?.phoneNumber}</TableCell>

@@ -26,6 +26,7 @@ const Category = [
   "Graphics Engineer",
   "Graphics Designer",
   "Video Editor",
+  "Software Engineer",
 ];
 
 const Categories = () => {

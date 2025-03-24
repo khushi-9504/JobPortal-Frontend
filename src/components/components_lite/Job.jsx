@@ -103,12 +103,12 @@ const Job = ({ job }) => {
           Details
         </Button>
 
-        <Button
+        {/* <Button
           variant="outline"
           className=" bg-[#6B3AC2] text-white font-bold rounded-sm"
         >
           Save for Later
-        </Button>
+        </Button> */}
       </div>
     </div>
   );

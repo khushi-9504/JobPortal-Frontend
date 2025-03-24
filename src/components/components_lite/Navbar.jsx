@@ -108,7 +108,7 @@ const Navbar = () => {
 
                   <div>
                     <h3 className="font-medium">{user?.fullname}</h3>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-muted-foreground text-justify">
                       {user?.profile?.bio}
                     </p>
                   </div>

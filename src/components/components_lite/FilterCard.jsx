@@ -10,20 +10,13 @@ const filterData = [
     array: [
       "Delhi",
       "Mumbai",
-      "Kolkata",
+
       "Chennai",
       "Bangalore",
       "Hyderabad",
       "Pune",
       "Ahmedabad",
       "Surat",
-      "Nagpur",
-      "Jaipur",
-      "Lucknow",
-      "Visakhapatnam",
-      "Bhopal",
-      "Indore",
-      "Nashik",
       "Vadodara",
       "Gandhinagar",
       "Rajkot",
@@ -39,7 +32,7 @@ const filterData = [
       "Mern",
       "React",
       "Data Scientist",
-      "Fullstack",
+      "Full stack",
       "Node",
       "Python",
       "Java",
@@ -50,15 +43,15 @@ const filterData = [
     ],
   },
 
-  {
-    filterType: "Salary",
-    array: ["0-50k", "50k-100k", "100k-200k", "200+k"],
-  },
+  // {
+  //   filterType: "Salary",
+  //   array: ["0-50k", "50k-100k", "100k-200k", "200+k"],
+  // },
 
-  {
-    filterType: "Experience",
-    array: ["0-3 years", "3-5 years", "5-7years", "7+years"],
-  },
+  // {
+  //   filterType: "Experience",
+  //   array: ["0-3 years", "3-5 years", "5-7years", "7+years"],
+  // },
 ];
 
 const FilterCard = () => {
